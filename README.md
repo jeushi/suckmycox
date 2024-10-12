@@ -1,9 +1,7 @@
 
 # SuckMyCox ;)
 
-Tiny script to spoof your MAC
-
-Intended to extend the CoxWiFi free trial duration
+Tiny script to spoof your MAC to extend free WiFi duration, specifically Cox although it should work with other similar connections.
 
 #### ⚠️ THIS SCRIPT HAS ONLY BEEN TESTED WITH WIFI ⚠️
 ## Installation
