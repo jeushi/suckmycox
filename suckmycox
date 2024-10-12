@@ -13,7 +13,7 @@ fi
 deviceName=$1
 randomMac=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/: $//') # Thanks random stackoverflow user :)
 
-if ! nmcli device status | grep -q "^$deviceName"; then
+if ! nmcli dev status | grep -q "^$deviceName"; then
   echo "Error! The provided device '$deviceName' does not exist. Please provide a valid device name."
   exit 1
 fi
