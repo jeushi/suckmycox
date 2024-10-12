@@ -27,5 +27,5 @@ fi
 
 
 nmcli con modify $networkName wifi.cloned-mac-address $randomMac"
-nmcli device disconnect $deviceName
-nmcli device connect $deviceName
+nmcli dev disconnect $deviceName
+nmcli dev connect $deviceName
