@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# Requires nmcli and openssl
+# Usage: suckmycox [Device Name] (optional: network name)
+
+
+if [ -z "$1" ] # Check if required argument is provided. if not provide error and exit
+then
+  echo "Error! You need to provide your device name! Usage: suckmycox [Device]"
+  exit
+fi
+
+deviceName=$1
+randomMac=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/: $//') # Thanks random stackoverflow user :)
+
+if ! nmcli device status | grep -q "^$deviceName"; then
+  echo "Error! The provided device '$deviceName' does not exist. Please provide a valid device name."
+  exit 1
+fi
+
+if [ -z "$2" ] # Check for optional argument
+then
+  networkName="CoxWiFi"
+else
+  networkName=$2
+fi
+
+
+nmcli con modify $networkName wifi.cloned-mac-address $randomMac"
+nmcli device disconnect $deviceName
+nmcli device connect $deviceName
